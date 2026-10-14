@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hong Kong Daily Temperature Trends | Level 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <link rel="stylesheet" href="level2.css" />
+</head>
+
+<body>
+    <main class="page">
+        <header class="header">
+            <div>
+                <p class="eyebrow">CSCE 679 · Data Visualization · Level 2</p>
+                <h1>Hong Kong Daily Temperature Trends</h1>
+                <div class="level-switch">
+                    <a href="index.html" class="level-btn">Level 1 — Monthly Heatmap</a>
+                    <a href="level2.html" class="level-btn active">Level 2 — Daily Trends</a>
+                </div>
+                <p class="subtitle">Daily maximum and minimum temperatures within each month, for the last 10 years of the dataset.</p>
+            </div>
+            <label class="file-picker">Load CSV from device <input id="csv-file" type="file" accept=".csv,text/csv" /></label>
+        </header>
+        <section class="chart-panel" aria-labelledby="chart-heading">
+            <div class="chart-heading">
+                <h2 id="chart-heading">Daily trends in a year × month matrix</h2>
+                <span id="period-label"></span>
+            </div>
+            <p id="status" role="status">Loading temperature records…</p>
+            <div id="chart" class="chart-container" aria-label="Daily temperature trends with years across columns and months across rows"></div>
+            <div class="footer">
+                <div class="legend-group"><span>Monthly mean temperature (°C) · cell background</span>
+                    <div class="legend-gradient"></div>
+                    <div class="legend-ticks" id="legend-ticks"></div>
+                </div>
+                <div class="line-legend"><span><i class="key max"></i> Daily maximum</span><span><i class="key min"></i> Daily minimum</span><span><i class="missing-key"></i> No data</span></div>
+            </div>
+            <p class="chart-note">Within every cell, the horizontal axis is day of month (1–31), and the vertical axis is temperature (0–40°C). Both lines use the same scale across every cell. Hover over a day to inspect actual readings. Gray cells have no recorded days.</p>
+        </section>
+        <p class="source-note">Source: provided <code>temperature_daily.csv</code> · Location is identified as Hong Kong by the assignment brief.</p>
+    </main>
+    <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+    <script src="level2.js"></script>
+</body>
+
+</html>

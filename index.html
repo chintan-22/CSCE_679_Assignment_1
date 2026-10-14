@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hong Kong Monthly Temperature | Level 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="page">
+        <header class="header">
+            <div>
+                <p class="eyebrow">CSCE 679 · Data Visualization · Level 1</p>
+                <h1>Hong Kong Monthly Temperature</h1>
+
+                <div class="level-switch">
+                    <a href="index.html" class="level-btn active">Level 1 — Monthly Heatmap</a>
+                    <a href="level2.html" class="level-btn">Level 2 — Daily Trends</a>
+                </div>
+
+                <p class="subtitle">A year-by-month heatmap of daily temperature extremes.</p>
+            </div>
+            <div class="controls">
+                <fieldset class="mode-switch" aria-label="Choose temperature metric">
+                    <legend>Display temperature</legend>
+                    <label><input type="radio" name="metric" value="max" checked /> Monthly maximum</label>
+                    <label><input type="radio" name="metric" value="min" /> Monthly minimum</label>
+                </fieldset>
+                <label class="file-picker">Load CSV from device <input id="csv-file" type="file" accept=".csv,text/csv" /></label>
+            </div>
+        </header>
+
+        <section class="chart-panel" aria-labelledby="chart-heading">
+            <div class="chart-heading">
+                <h2 id="chart-heading">Monthly maximum temperature</h2>
+                <span id="period-label" class="period-label"></span>
+            </div>
+            <p id="status" class="status" role="status">Loading daily temperature records…</p>
+            <div id="chart" class="chart-container" aria-label="Monthly Hong Kong temperature heatmap, with years in columns and months in rows"></div>
+            <div class="footer">
+                <div class="legend-block">
+                    <span id="legend-caption">Temperature (°C)</span>
+                    <div class="legend-gradient" aria-label="Color scale from cooler light yellow to hotter dark red"></div>
+                    <div class="legend-ticks" id="legend-ticks"></div>
+                </div>
+                <p class="chart-note">Hover or focus a cell for the extreme temperature and its date. Blank cells mean no observations.</p>
+            </div>
+        </section>
+        <p class="source-note">Data: Hong Kong daily temperatures · temperature_daily.csv</p>
+    </main>
+    <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
